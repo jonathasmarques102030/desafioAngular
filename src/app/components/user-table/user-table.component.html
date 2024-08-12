@@ -1,0 +1,18 @@
+<table class="styled-table">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Email</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{ user.nome }}</td>
+      <td>{{ user.email }}</td>
+      <td>
+        <button class="delete-button" (click)="deleteUser(user.id)">Deletar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,13 @@
+<form (ngSubmit)="onSubmit()" #userForm="ngForm" class="user-form">
+  <div class="form-group">
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" name="nome" required [(ngModel)]="user.nome" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required [(ngModel)]="user.email" class="form-control">
+  </div>
+  <button type="submit" [disabled]="!user.nome || !user.email" class="submit-button">Enviar</button>
+</form>
+
+<p *ngIf="message" class="message" [ngClass]="{'error': isError, 'success': !isError}">{{ message }}</p>

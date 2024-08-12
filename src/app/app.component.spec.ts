@@ -1,15 +1,22 @@
 import { TestBed } from '@angular/core/testing';
-import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+
 import { AppComponent } from './app.component';
+import { FormComponent } from './components/form/form.component';
+import { UserTableComponent } from './components/user-table/user-table.component';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        RouterModule.forRoot([])
+        HttpClientTestingModule,
+        FormsModule
       ],
       declarations: [
-        AppComponent
+        AppComponent,
+        FormComponent,
+        UserTableComponent
       ],
     }).compileComponents();
   });
@@ -20,16 +27,17 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'curso-angular'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('curso-angular');
-  });
-
-  it('should render title', () => {
+  it('should render <app-form>', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, curso-angular');
+    expect(compiled.querySelector('app-form')).toBeTruthy();
+  });
+
+  it('should render <app-user-table>', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelector('app-user-table')).toBeTruthy();
   });
 });
